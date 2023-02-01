@@ -59,12 +59,12 @@ std::vector<bool> randomList(int size, int numFalses) {
 }
 
 int main() {
-  hook = SetWindowsHookEx(WH_MOUSE_LL, MouseProc, NULL, 0);
-  HHOOK keyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, NULL, 0);
   int numFalses;
   std::cout << "How much clicks do you want to remove: ";
   std::cin >> numFalses;
-  list = randomList(10, numFalses);
+	list = randomList(10, numFalses);
+  hook = SetWindowsHookEx(WH_MOUSE_LL, MouseProc, NULL, 0);
+  HHOOK keyboardHook = SetWindowsHookEx(WH_KEYBOARD_LL, KeyboardProc, NULL, 0);
   MSG msg;
   while (GetMessage(&msg, NULL, 0, 0)) {
     TranslateMessage(&msg);
